@@ -1,16 +1,39 @@
 // ==UserScript==
 // @name         Execute Script
 // @namespace    http://tampermonkey.net/
-// @version      0.4
-// @description  try to take over the world!
+// @version      0.5
+// @license      MIT
+// @description  Runs booking functions at given urls
 // @author       Me
-// @match        https://topup.chch.ox.ac.uk/BlockBook.aspx?*
+// @match        https://topup.chch.ox.ac.uk/BlockBook.aspx*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=ox.ac.uk
 // @run-at       document-idle
 // ==/UserScript==
 
 (function() {
     'use strict';
+
+    // Create button elements:
+    var button1 = document.createElement("button");
+    var button2 = document.createElement("button");
+    button1.innerText = "Book Formal Hall";
+    button2.innerText = "Book Informal Hall";
+
+    // Append to body:
+    document.body.appendChild(button1);
+    document.body.appendChild(button2);
+
+    button1.onclick = redirectFormal;
+    button2.onclick = redirectInformal;
+
+    if (window.location.href == "https://topup.chch.ox.ac.uk/BlockBook.aspx?autobook=formal") {
+        bookFormal()
+    }
+
+    else if (window.location.href == "https://topup.chch.ox.ac.uk/BlockBook.aspx?autobook=informal") {
+        bookInformal()
+    }
+
 
     function bookFormal() {
 
@@ -30,7 +53,8 @@
 
         //document.getElementById("ContentPlaceHolder1_txtDietaryInfo").innerHTML = "I don't care if it's free, take the gluten out the damn bread"
 
-        document.getElementById("ContentPlaceHolder1_btnBlockBook").click()
+        //document.getElementById("ContentPlaceHolder1_btnBlockBook").click()
+        clickButton()
 
     }
 
@@ -52,16 +76,26 @@
 
         //document.getElementById("ContentPlaceHolder1_txtDietaryInfo").innerHTML = "I don't care if it's free, take the gluten out the damn bread"
 
+        //document.getElementById("ContentPlaceHolder1_btnBlockBook").click()
+        clickButton()
+
+    }
+
+    function clickButton() {
+
         document.getElementById("ContentPlaceHolder1_btnBlockBook").click()
+    }
+
+    function redirectInformal() {
+
+        window.location.href = "https://topup.chch.ox.ac.uk/BlockBook.aspx?autobook=informal"
 
     }
 
-    if (window.location.href == "https://topup.chch.ox.ac.uk/BlockBook.aspx?autobook=formal") {
-        bookFormal()
-    }
+    function redirectFormal() {
 
-    if (window.location.href == "https://topup.chch.ox.ac.uk/BlockBook.aspx?autobook=informal") {
-        bookInformal()
+        window.location.href = "https://topup.chch.ox.ac.uk/BlockBook.aspx?autobook=formal"
+
     }
 
 })();
