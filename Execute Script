@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Execute Script
 // @namespace    http://tampermonkey.net/
-// @version      0.5
+// @version      0.6
 // @license      MIT
 // @description  Runs booking functions at given urls
 // @author       Me
@@ -49,6 +49,12 @@
         document.getElementById("ContentPlaceHolder1_chkFri").checked = true
         document.getElementById("ContentPlaceHolder1_chkSat").checked = true
 
+        var date1 = document.getElementById("ContentPlaceHolder1_dateFromText").min
+        document.getElementById("ContentPlaceHolder1_dateFromText").value = date1
+
+        var date2 = document.getElementById("ContentPlaceHolder1_dateToText").max
+        document.getElementById("ContentPlaceHolder1_dateToText").value = date2
+
         //document.getElementById("ContentPlaceHolder1_lstDietary_2").checked = true
 
         //document.getElementById("ContentPlaceHolder1_txtDietaryInfo").innerHTML = "I don't care if it's free, take the gluten out the damn bread"
@@ -71,6 +77,12 @@
         document.getElementById("ContentPlaceHolder1_chkThurs").checked = true
         document.getElementById("ContentPlaceHolder1_chkFri").checked = true
         document.getElementById("ContentPlaceHolder1_chkSat").checked = true
+
+        var date1 = document.getElementById("ContentPlaceHolder1_dateFromText").min
+        document.getElementById("ContentPlaceHolder1_dateFromText").value = date1
+
+        var date2 = document.getElementById("ContentPlaceHolder1_dateToText").max
+        document.getElementById("ContentPlaceHolder1_dateToText").value = date2
 
         //document.getElementById("ContentPlaceHolder1_lstDietary_2").checked = true
 
