@@ -6,4 +6,4 @@ Step 2: install the following two userscripts: [Execute Script](https://greasyfo
 
 How to use: Right click anywhere in Chrome, hover mouse over "Tampermonkey", and click "Book Hall". Tah-dah. *Note: Any previously open tabs must be reloaded since userscript was added in order to work!*  
   
-Also, buttons have been added to the bottom of the block book page itself if you prefer seeing what goes on
+Also, buttons have been added to the bottom of the block book page itself if you prefer seeing what goes on.
