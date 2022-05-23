@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Execute Script
 // @namespace    http://tampermonkey.net/
-// @version      0.6
+// @version      0.7
 // @license      MIT
 // @description  Runs booking functions at given urls
 // @author       Me
-// @match        https://topup.chch.ox.ac.uk/BlockBook.aspx*
+// @match        https://topup.chch.ox.ac.uk/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=ox.ac.uk
 // @run-at       document-idle
 // ==/UserScript==
@@ -26,7 +26,18 @@
     button1.onclick = redirectFormal;
     button2.onclick = redirectInformal;
 
-    if (window.location.href == "https://topup.chch.ox.ac.uk/BlockBook.aspx?autobook=formal") {
+    //var date1 = document.getElementById("ContentPlaceHolder1_dateFromText").min
+    //var date2 = document.getElementById("ContentPlaceHolder1_dateToText").max
+
+    if (window.location.href == "https://topup.chch.ox.ac.uk/Main.aspx?gobackagain") {
+        redirectInformal()
+    }
+
+    else if (document.getElementById("ContentPlaceHolder1_dateFromText").min == document.getElementById("ContentPlaceHolder1_dateToText").max) {
+        window.location.href = "https://topup.chch.ox.ac.uk/Main.aspx?gobackagain"
+    }
+
+    else if (window.location.href == "https://topup.chch.ox.ac.uk/BlockBook.aspx?autobook=formal") {
         bookFormal()
     }
 
